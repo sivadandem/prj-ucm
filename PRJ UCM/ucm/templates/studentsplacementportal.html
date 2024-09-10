@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="icon" type="image/png" href="static/images/biher.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="static/index.css" />
+    <link rel="stylesheet" href="static/admin.css" />
+    <link rel="stylesheet" href="static/quick links.css" />
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-university"></i> Unified College Management</a>
+        <nav class="navbar">
+            <a href="#query">Show Table</a>
+            <a href="{{ url_for('studentportal') }}" class="btn">Home</a>
+        </nav>
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </header>
+
+
+    <section class="admin-section" id="query" style="margin-top:5%;">
+        <h1><span>Companies</span> Table</h1>
+        <section class="query-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl. No.</th>
+                        <th>Company Name</th>
+                        <th>Company Image</th>
+                        <th>Registration Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for placement in placements %}
+                    <tr>
+                        <td>{{ placement[0] }}</td>
+                        <td>{{ placement[1] }}</td>
+                        <td><img src="{{ placement[3] }}" alt="{{ placement[1] }} Logo" style="width: 50px; height: auto;"></td>
+                        <td><a href="{{ placement[2] }}" target="_blank">Register</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </section>
+    
+
+    <script src="static/index.js"></script>
+</body>
+
+</html>

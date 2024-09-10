@@ -1,0 +1,82 @@
+CREATE DATABASE biher2024;
+
+
+
+user biher2024;
+
+
+CREATE TABLE admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phonenumber VARCHAR(20) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    unicode VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE announcements (
+    id INT AUTO_INCREMENT PRIMARY KEY,  -- Auto-incrementing primary key column
+    title VARCHAR(100) NOT NULL,        -- Title field, cannot be NULL
+    message TEXT NOT NULL,              -- Message field, cannot be NULL
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP  -- Timestamp field with default current timestamp
+);
+
+CREATE TABLE placements2024 (
+    slno INT AUTO_INCREMENT PRIMARY KEY,  -- Auto-incrementing primary key column
+    company_name VARCHAR(255) NOT NULL,   -- Company name field, cannot be NULL
+    registration_link TEXT NOT NULL,      -- Registration link field, cannot be NULL
+    company_image TEXT NOT NULL           -- Company image field, cannot be NULL
+);
+
+
+CREATE TABLE queries (
+    slno INT AUTO_INCREMENT PRIMARY KEY,   -- Auto-incrementing primary key column
+    name VARCHAR(255) NOT NULL,            -- Name field, cannot be NULL
+    phonenumber VARCHAR(20) NOT NULL,      -- Phone number field, cannot be NULL
+    email VARCHAR(255) NOT NULL,           -- Email field, cannot be NULL
+    query TEXT NOT NULL,                   -- Query field, cannot be NULL
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp field with default current timestamp
+    status ENUM('yes', 'no') DEFAULT 'no' -- Status field with ENUM values and default 'no'
+);
+
+
+CREATE TABLE students (
+    slno INT AUTO_INCREMENT PRIMARY KEY,    -- Auto-incrementing primary key column
+    id VARCHAR(50) NOT NULL UNIQUE,         -- Unique identifier for the student
+    name VARCHAR(100) NOT NULL,             -- Student's name, cannot be NULL
+    email VARCHAR(100) NOT NULL,            -- Student's email, cannot be NULL
+    phonenumber VARCHAR(20) NOT NULL,       -- Student's phone number, cannot be NULL
+    unicode VARCHAR(100) NOT NULL,          -- Unicode field, cannot be NULL
+    age VARCHAR(10),                        -- Student's age, optional
+    course VARCHAR(20),                     -- Student's course, optional
+    section VARCHAR(50),                    -- Student's section, optional
+    password VARCHAR(100),                  -- Student's password, optional
+    fee_balance VARCHAR(20),                -- Student's fee balance, optional
+    date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp field with default current timestamp
+    attendance VARCHAR(5) DEFAULT '100%',   -- Attendance field with default value of '100%'
+    hostel VARCHAR(50)                      -- Hostel field, optional
+);
+
+
+CREATE TABLE teachers (
+    slno INT AUTO_INCREMENT PRIMARY KEY,    -- Auto-incrementing primary key column
+    id VARCHAR(20) NOT NULL,                -- Unique identifier for the teacher
+    name VARCHAR(100) NOT NULL,             -- Teacher's name, cannot be NULL
+    email VARCHAR(100) NOT NULL,            -- Teacher's email, cannot be NULL
+    phonenumber VARCHAR(20) NOT NULL,       -- Teacher's phone number, cannot be NULL
+    unicode VARCHAR(100) NOT NULL,          -- Unicode field, cannot be NULL
+    age VARCHAR(20),                        -- Teacher's age, optional
+    salary VARCHAR(20),                     -- Teacher's salary, optional
+    department VARCHAR(50),                -- Teacher's department, optional
+    password VARCHAR(100),                  -- Teacher's password, optional
+    leave_reason VARCHAR(50),               -- Reason for leave, optional
+    leave_status VARCHAR(255),              -- Leave status, optional
+    leave_start DATE,                       -- Leave start date, optional
+    leave_end DATE,                         -- Leave end date, optional
+    leave_extension DATE,                   -- Leave extension date, optional
+    date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP  -- Timestamp field with default current timestamp
+);
+
+
+

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="icon" type="image/png" href="static/images/biher.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="static/index.css" />
+    <link rel="stylesheet" href="static/admin.css" />
+    <link rel="stylesheet" href="static/quick links.css" />
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-university"></i> Unified College Management</a>
+        <nav class="navbar">
+            <a href="#update">Add</a>
+            <a href="{{ url_for('view_teachers') }}">View Teacher</a>
+            <a href="{{ url_for('view_students') }}">View Student</a>
+            <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+        </nav>
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </header>
+
+    <section class="home" id="about">
+        <div class="content">
+            <h1 class="heading">Hi, <span>{{ username }}!</span></h1>
+            <div class="main">
+                <div class="up">
+                    <a href="{{ url_for('queriestable') }}">
+                        <button class="card1">
+                            <i class="fas fa-question-circle"></i>
+                            <!-- Query Icon -->
+                        </button>
+                    </a>
+                    <a href="#update">
+                        <button class="card2">
+                            <i class="fas fa-pencil-alt"></i>
+                            <!-- Teacher Icon -->
+                        </button>
+                    </a>
+                    </a>
+                </div>
+
+                <div class="down">
+                    <a href="{{ url_for('placementsportal') }}">
+                        <button class="card3">
+                            <i class="fas fa-handshake"></i>
+
+                            <!-- Student Icon -->
+                        </button>
+                    </a>
+                    <a href="{{ url_for('queriestable') }}">
+                        <button class="card4">
+                            <i class="fas fa-bullhorn"></i>
+                            <!-- University Icon -->
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src="static/images/adminn.svg" alt="Admin Image" />
+        </div>
+    </section>
+
+    <section class="admin-section">
+        <h1>Over<span>view</span></h1>
+        <section class="icons-container">
+            <div class="icons">
+                <i class="fas fa-bullhorn"></i>
+                <p class="blink" style="color: red">{{ announcements_count }}</p>
+                <p>Announcements</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-question-circle"></i>
+                <p class="blink" style="color: red">{{ queries_count }}</p>
+                <p>Queries</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <p>{{ teacher_count }}</p>
+                <p>Teachers</p>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-user-graduate"></i>
+                <p>{{ student_count }}</p>
+                <p>Students</p>
+            </div>
+        </section>
+    </section>
+
+    <section class="admin-section" id="announcementform">
+        <div class="row" >
+            <form id="queryForm" action="{{ url_for('post_announcement') }}" method="post">
+                <h1><span style="color: white">Post</span> Announcement</h1>
+                <label for="title">Event Title</label>
+                <input type="text" id="title" name="title" class="box" required /><br />
+
+                <label for="message">Message</label>
+                <textarea id="queryMessage" name="message" class="box" rows="4" required></textarea><br />
+                <div id="error-message" style="color: red"></div>
+
+                <input type="submit" value="Post Announcement" class="btn" />
+            </form>
+        </div>
+    </section>
+
+    <section class="admin-section" id="announcementform">
+        <div class="row" id="update">
+            <form action="{{ url_for('add_teacher') }}" method="post">
+                <h1><span>Add</span> Teacher</h1>
+                <label for="id">ID</label>
+                <input type="text" id="id" name="id" class="box" required /><br />
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" class="box" required /><br />
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="box" required /><br />
+
+                <label for="phonenumber">Phone Number</label>
+                <input type="text" id="phonenumber" name="phonenumber" class="box" required /><br />
+
+                
+
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" class="box" /><br />
+
+                <label for="salary">Salary</label>
+                <input type="text" id="salary" name="salary" class="box" /><br />
+
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" class="box" /><br />
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="box" required /><br />
+                <label for="unicode">Unicode</label>
+                <input type="text" id="unicode" name="unicode" class="box" required /><br />
+                <input type="submit" value="Add Teacher" id="formbutton" class="btn" />
+            </form>
+    </section>
+
+    <section class="admin-section" id="announcementform">
+        <div class="row">
+            <form action="{{ url_for('add_student') }}" method="post">
+                <h1><span>Add</span> Student</h1>
+                <label for="id">ID</label>
+                <input type="text" id="id" name="id" class="box" required /><br />
+    
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" class="box" required /><br />
+    
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="box" required /><br />
+    
+                <label for="phonenumber">Phone Number</label>
+                <input type="text" id="phonenumber" name="phonenumber" class="box" required /><br />
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="box" required/><br />
+    
+                <label for="hostel">Hostel</label>
+                <input type="text" id="hostel" name="hostel" class="box" /><br />
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" class="box" /><br />
+    
+                <label for="course">Course</label>
+                <input type="text" id="course" name="course" class="box" /><br />
+    
+                <label for="section">Section</label>
+                <input type="text" id="section" name="section" class="box" /><br />
+                <label for="unicode">Unicode</label>
+                <input type="text" id="unicode" name="unicode" class="box" required /><br />
+    
+                
+    
+                <input type="submit" value="Add Student" class="btn" />
+            </form>
+        </div>
+    </section>
+
+    <script src="static/index.js"></script>
+</body>
+
+</html>

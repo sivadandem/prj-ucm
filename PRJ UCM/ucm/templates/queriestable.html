@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q/A</title>
+    <link rel="icon" type="image/png" href="static/images/biher.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="static/index.css">
+    <link rel="stylesheet" href="static/admin.css">
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <i class="fas fa-university"></i> Unified College Management
+        </a>
+        <nav class="navbar">
+            <a href="{{ url_for('adminportal') }}"><button class="btn">Home</button></a>
+        </nav>
+    </header>
+
+    <section class="admin-section" id="query" style="margin-top:5%;">
+        <h1><span>Query</span> Table</h1>
+        <section class="query-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Query</th>
+                        <th>Date</th>
+                        <th>Responded</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for query in queries %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ query.slno }}</td>
+                            <td>{{ query.name }}</td>
+                            <td>{{ query.phonenumber }}</td>
+                            <td>{{ query.email }}</td>
+                            <td>{{ query.query }}</td>
+                            <td>{{ query.timestamp }}</td>
+                            <td>
+                                <form action="{{ url_for('update_status', query_id=query.slno) }}" method="post">
+                                    <select name="status" onchange="this.form.submit()">
+                                        <option value="yes" {% if query.status == 'yes' %}selected{% endif %}>Yes</option>
+                                        <option value="no" {% if query.status == 'no' %}selected{% endif %}>No</option>
+                                    </select>
+                                </form>
+                                <form action="{{ url_for('delete_query', query_id=query.slno) }}" method="post" style="display:inline;">
+                                    <button type="submit" class="btn">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </section>
+
+    <section class="admin-section" id="query">
+        <h1><span>Announcement</span> Table</h1>
+        <section class="query-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Event</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for announcement in announcements %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td style="color:var(--blue); font-weight:bold; text-transform: uppercase;">
+                                {{ announcement.title }}
+                            </td>
+                            <td>{{ announcement.message }}</td>
+                            <td>{{ announcement.timestamp }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q/A</title>
+    <link rel="icon" type="image/png" href="static/images/biher.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="static/index.css">
+    <link rel="stylesheet" href="static/admin.css">
+    <link rel="stylesheet" href="static/quick links.css">
+
+    <style>
+        body{
+            margin-top:5%
+        }
+        .admin-section form label{
+            color:red;
+            font-size:medium;
+        }
+        .admin-section form input{
+            background-color:rgba(22,160,133,.2);
+            margin-left:10px;
+            padding:10px;
+            border-radius:10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <i class="fas fa-university"></i> Unified College Management
+        </a>
+        <nav class="navbar">
+            <a href="{{ url_for('teacherportal') }}"><button class ="btn" >Home</button></a>
+        </nav>
+    </header>
+
+    <section class="admin-section" id="query">
+        <h1>My<span> Announcement</span></h1>
+
+        <!-- Form to select section -->
+        <form method="POST" action="{{ url_for('announcementtable') }}">
+            <label for="section_name">Enter Section Name:</label>
+            <input type="text" id="section_name" name="section_name" required>
+            <button type="submit"class='btn'>Submit</button>
+        </form>
+
+        {% if section_name %}
+            <section class="query-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sl No</th>
+                            <th>Event</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for announcement in announcements %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td style="color:var(--blue); font-weight:bold; text-transform: uppercase;">
+                                    {{ announcement.title }}
+                                </td>
+                                <td>{{ announcement.message }}</td>
+                                <td>{{ announcement.created_at }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        {% endif %}
+    </section>
+</body>
+
+</html>

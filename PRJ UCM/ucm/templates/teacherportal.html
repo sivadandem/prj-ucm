@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Portal</title>
+    <link rel="icon" type="image/png" href="static/images/biher.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="static/index.css" />
+    <link rel="stylesheet" href="static/admin.css" />
+    <link rel="stylesheet" href="static/quick links.css" />
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <i class="fas fa-university"></i> Unified College Management
+        </a>
+        <nav class="navbar">
+            <a href="#query">Announcements</a>
+            <a href="#announce">Post</a>
+            <a href="#leave">Leave</a>
+            <a href="{{ url_for('view_students_teacher') }}">View Student</a>
+            <a href="{{ url_for('teacherlogout') }}" class="btn">Logout</a>
+        </nav>
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </header>
+
+    <section class="home" id="about">
+        <div class="content">
+            <h1 class="heading">Hi, <span>{{ username }}!</span></h1>
+            <div class="main">
+                <div class="up">
+                    <a href="{{ url_for('attendance') }}">
+                        <button class="card1">
+                            <i class="fas fa-check-circle"></i>
+
+                        </button>
+                    </a>
+                    <a href="#update-teacher">
+                    <button class="card2">
+                        <i class="fas fa-pencil-alt"></i>
+
+                    </button></a>
+                </div>
+                
+            
+                <div class="down">
+                    <a href="{{ url_for('todo_list') }}">
+                        <button class="card3">
+                            <i class="fas fa-sticky-note"></i>
+                        </button>
+                    </a>
+                    <a href="{{ url_for('teacherannouncementtable') }}">
+                        <button class="card4">
+                            <i class="fas fa-bullhorn"></i>
+                            <!-- University Icon -->
+                        </button>
+                    </a>
+                </div>
+            </div>            
+        </div>
+        
+        <div class="image">
+            <img src="static/images/adminn.svg" />
+        </div>
+    </section>
+
+    <section class="admin-section">
+        <h1>Over<span>view</span></h1>
+        <section class="icons-container">
+            <div class="icons">
+                <i class="fas fa-bullhorn"></i>
+                <p class="blink" style="color: red">{{ announcements_count }}</p>
+                <h3>Announcements</h3>
+            </div>
+
+            <div class="icons">
+                <i class="fas fa-user-graduate"></i>
+                <p>{{ student_count }}</p>
+                <h3>Students</h3>
+            </div>
+        </section>
+    </section>
+
+    <section class="admin-section" id="query">
+        <h1>Admin<span> Announcement</span></h1>
+        <section class="query-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Event</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for announcement in announcements %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td style="color: var(--blue); font-weight: bold; text-transform: uppercase;">
+                            {{ announcement.title }}
+                        </td>
+                        <td>{{ announcement.message }}</td>
+                        <td>{{ announcement.timestamp }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </section>
+
+    <section class="admin-section" id="announcementform">
+        <div class="row" id="announce">
+            <form action="{{ url_for('post_announcement_teacher') }}" method="post">
+                <h1><span style="color: white">Post</span> Announcement</h1>
+                <label for="title">Event Title</label>
+                <input type="text" id="title" name="title" class="box" required /><br />
+            
+                <label for="message">Message</label>
+                <textarea id="message" name="message" class="box" rows="4" required></textarea><br />
+            
+                <label for="section_name">Section</label>
+                <input type="text" id="section_name" name="section_name" class="box" required /><br />
+            
+                <input type="submit" value="Post Announcement" class="btn" />
+            </form>
+            
+        </div>
+    </section>
+
+    <section class="admin-section" id="announcementform" onsubmit="return confirmSubmission()">
+        <div class="row" id="leave">
+            <form action="{{ url_for('apply_leave') }}" method="post">
+                <h1><span style="color: white">Apply</span> for Leave</h1>
+
+                <label for="leave_reason">Leave Reason</label>
+                <input type="text" id="leave_reason" name="leave_reason" class="box" required /><br />
+
+                <label for="leave_start">Leave Start Date</label>
+                <input type="date" id="leave_start" name="leave_start" class="box" required /><br />
+
+                <label for="leave_end">Leave End Date</label>
+                <input type="date" id="leave_end" name="leave_end" class="box" required /><br />
+
+                <input type="submit" value="Apply for Leave" class="btn" />
+            </form>
+        </div>
+    </section>
+
+    <section class="admin-section" id="announcementform" onsubmit="return confirmSubmission()">
+        <div class="row" id="update-teacher">
+            <form action="{{ url_for('update_teacher') }}" method="post" onsubmit="return confirmSubmission()">
+                <h1><span>Update</span> Details</h1>
+                <label for="id">ID</label>
+                <input type="text" id="id" name="id" class="box" required /><br />
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" class="box" /><br />
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="box"  /><br />
+
+                <label for="phonenumber">Phone Number</label>
+                <input type="text" id="phonenumber" name="phonenumber" class="box"  /><br />
+
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" class="box" /><br />
+
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" class="box" /><br />
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="box" /><br />
+
+                <input type="submit" value="Update Teacher" id="formbutton" class="btn" />
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function confirmSubmission() {
+            return confirm('Are you sure you want to submit?');
+        }
+    </script>
+    <script src="static/index.js"></script>
+
+    
+</body>
+
+</html>

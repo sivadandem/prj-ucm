@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Portal</title>
+    <link rel="icon" type="image/png" href="static/images/biher.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="static/index.css" />
+    <link rel="stylesheet" href="static/admin.css" />
+    <link rel="stylesheet" href="static/quick links.css" />
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-university"></i> Unified College Management</a>
+        <nav class="navbar">
+            <a href="#announcementform">Update</a>
+            <a href="{{ url_for('studentlogout') }}" class="btn">Logout</a>
+        </nav>
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </header>
+
+    <section class="home" id="about">
+        <div class="content">
+            <h1 class="heading">Hi, <span>{{ username }}!</span></h1>
+            <div class="main">
+                <div class="up">
+                    <a href="{{ url_for('studentdetails') }}">
+                        <button class="card1">
+                            <i class="fas fa-user"></i>
+                            <!-- Query Icon -->
+                        </button>
+                    </a>
+                    <a href="{{ url_for('view_placements_students') }}">
+                        <button class="card2">
+                            <i class="fas fa-handshake"></i>
+                            <!-- Teacher Icon -->
+                        </button>
+                    </a>
+                </div>
+
+                <div class="down">
+                    <a href="{{ url_for('mytodo_list') }}">
+                        <button class="card3">
+                            <i class="fas fa-sticky-note"></i>
+                        </button>
+                    </a>
+                    <a href="{{ url_for('announcementtablefromteacher') }}">
+                        <button class="card4">
+                            <i class="fas fa-bullhorn"></i>
+                            <!-- University Icon -->
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src="static/images/adminn.svg" alt="Admin Image" />
+        </div>
+    </section>
+
+    <section class="admin-section" id="query">
+        <h1><span>Admin</span> Announcements</h1>
+        <section class="query-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Event</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for announcement in announcements %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td style="color:var(--blue); font-weight:bold; text-transform: uppercase;">
+                                    {{ announcement[0] }}
+                                </td>
+                                <td>{{ announcement[1] }}</td>
+                                <td>{{ announcement[2] }}</td>
+                            </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </section>
+
+    <section class="admin-section" id="announcementform">
+        <div class="row" id="update-student">
+            <form action="{{ url_for('update_student') }}" method="post" onsubmit="return confirmSubmission()">
+                <h1><span>Update</span> Details</h1>
+                <label for="id">ID</label>
+                <input type="text" id="id" name="id" class="box" required /><br />
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" class="box" /><br />
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="box" /><br />
+
+                <label for="phonenumber">Phone Number</label>
+                <input type="text" id="phonenumber" name="phonenumber" class="box" /><br />
+
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" class="box" /><br />
+
+                <label for="section">Section</label>
+                <input type="text" id="section" name="section" class="box" /><br />
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="box" /><br />
+
+                <label for="hostel">Hostel</label>
+                <input type="text" id="hostel" name="hostel" class="box" /><br />
+
+                <input type="submit" value="Update" id="formbutton" class="btn" />
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function confirmSubmission() {
+            return confirm("Are you sure you want to update the student details?");
+        }
+    </script>
+
+    <script src="static/index.js"></script>
+</body>
+
+</html>

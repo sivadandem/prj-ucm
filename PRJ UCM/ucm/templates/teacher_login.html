@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Login</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/biher.png') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+
+<body>
+    <section class="home" id="login-section">
+        <div class="button">
+            <a href="{{ url_for('teachersignup') }}"><button id="signup-btn" class="btn">Signup</button></a>
+            <a href="{{ url_for('home') }}"><button id="home-btn" class="btn">Home</button></a>
+        </div>
+        <div class="content">
+            <h1 class="heading"><span>Teacher</span> LOGIN</h1>
+            
+            <!-- Login Form -->
+            <div class="login-form" id="login-form">
+                <form action="{{ url_for('teacherlogin') }}" method="post">
+                    {% if error %}
+                    <div class="blink" id="error-message" style="color:white;font-size:15px;">{{ error }}</div>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="username"><h1>Email</h1></label>
+                        <input type="text" id="username" name="username" placeholder="Enter your email" required aria-label="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><h1>Password</h1></label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required aria-label="Password">
+                    </div>
+                    <input type="submit" value="Login" class="btn">
+                </form>
+            </div>
+        </div>
+    
+        <div class="image">
+            <img src="{{ url_for('static', filename='images/teacherlogin.svg') }}" alt="Teacher Login">
+        </div>
+    </section>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+@import url("index.css");
+
+.card {
+  width: 50%;
+  height: 254px;
+  background: var(--blue);
+  border-radius: 15px;
+  box-shadow: 1px 5px 60px 0px #100a886b;
+  margin: 30px auto; /* Center the card horizontally and add vertical margin */
+}
+
+.card .card-border-top {
+  width: 60%;
+  height: 3%;
+  background: white;
+  margin: auto;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.card span {
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  display: block;
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.card .job {
+  font-weight: 400;
+  color: white;
+  display: block;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 12px;
+}
+
+.card .img {
+  width: 100px;
+  height: 80px;
+  background: white;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 25px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .card {
+    width: 80%; /* Adjust width for smaller screens */
+    height: auto; /* Allow height to adjust automatically */
+    margin: 20px auto; /* Adjust margin for smaller screens */
+  }
+
+  .card .card-border-top {
+    width: 80%; /* Adjust width for smaller screens */
+  }
+
+  .card span {
+    font-size: 14px; /* Reduce font size for smaller screens */
+  }
+
+  .card .job {
+    font-size: 10px; /* Reduce font size for smaller screens */
+  }
+
+  .card .img {
+    width: 80px; /* Adjust width for smaller screens */
+    height: 60px; /* Adjust height for smaller screens */
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    width: 90%; /* Further adjust width for very small screens */
+    height: auto; /* Allow height to adjust automatically */
+  }
+
+  .card .card-border-top {
+    width: 90%; /* Adjust width for very small screens */
+  }
+
+  .card span {
+    font-size: 12px; /* Further reduce font size for very small screens */
+  }
+
+  .card .job {
+    font-size: 8px; /* Further reduce font size for very small screens */
+  }
+
+  .card .img {
+    width: 60px; /* Adjust width for very small screens */
+    height: 50px; /* Adjust height for very small screens */
+  }
+}

@@ -1,0 +1,58 @@
+@import url('index.css');
+
+/* Base login form styling */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--blue);
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .login-form {
+        padding: 15px;
+        max-width: 90%; /* Make the form more flexible on smaller screens */
+    }
+
+    .login-form .form-group input {
+        padding: 8px; /* Slightly reduce padding for input fields */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-form {
+        padding: 10px;
+        max-width: 100%; /* Full-width for smaller devices */
+    }
+
+    .login-form .form-group label {
+        font-size: 14px; /* Smaller font size for better readability */
+    }
+
+    .login-form .form-group input {
+        padding: 6px;
+        font-size: 14px;
+    }
+}

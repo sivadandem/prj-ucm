@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+    <link rel="icon" type="image/png" href="static/images/biher.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="static/index.css" />
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-university"></i> Unified College Management</a>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#courses">Courses</a>
+            <a href="#about">About Us</a>
+            <a href="#queries1">Query</a>
+            <a href="{{ url_for('adminlogin') }}" id="adminlogin">Admin</a>
+            <a href="{{ url_for('teacherlogin') }}">Teacher</a>
+            <a href="{{ url_for('studentlogin') }}">Student</a>
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </header>
+
+    <section class="home" id="home">
+        <div class="image">
+            <img src="static/images/biherlogo.svg" alt="BIHER Logo" />
+        </div>
+        <div class="content">
+            <h3>BHARAT UNIVERSITY</h3>
+            <p>Bharath Institute of Science and Technology (BIST) started with Sri Lakshmi Ammal Educational Trust as the first self-financing Engineering College in Tamil Nadu in 1984 by Dr. S. Jagathrakshakan. The trust then established Sree Balaji Dental College and Hospital in 1989. Sree Balaji Dental College and Hospital was first recognized as a Deemed to be University by MHRD in July 2002, under section 3 of UGC Act 1956 and placed under the purview of new trust of Bharath Institute of Higher Education and Research (BIHER). The Bharath Institute of Science and Technology (BIST) and other institutions (below) were then brought under the ambit of Bharath Institute of Higher Education and Research (BIHER).</p>
+            <a href="https://www.bharathuniv.ac.in/contact-us.php" class="btn">Contact Us <span class="fas fa-chevron-right"></span></a>
+        </div>
+    </section>
+
+    <section class="icons-container">
+        <div class="icons">
+            <i class="fas fa-briefcase"></i>
+            <h3>39</h3>
+            <p>Years of Experience</p>
+        </div>
+
+        <div class="icons">
+            <i class="fas fa-file-signature"></i>
+            <h3>400+</h3>
+            <p>Patents</p>
+        </div>
+
+        <div class="icons">
+            <i class="fas fa-wallet"></i>
+            <h3>47.5L</h3>
+            <p>Highest Package</p>
+        </div>
+
+        <div class="icons">
+            <i class="fas fa-book"></i>
+            <h3>3000+</h3>
+            <p>Publications</p>
+        </div>
+
+        <div class="icons">
+            <i class="fas fa-users"></i>
+            <h3>15000+</h3>
+            <p>Students</p>
+        </div>
+    </section>
+
+    <section class="courses" id="courses">
+        <h1 class="heading">BTech <span>Courses</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <i class="fas fa-desktop"></i>
+                <h3>CSE</h3>
+                <p>Computer Science and Engineering</p>
+                <a href="#" class="btn" id="b">Learn More <span class="fas fa-chevron-right"></span></a>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-microchip"></i>
+                <h3>ECE</h3>
+                <p>Electronics and Communication Engineering</p>
+                <a href="#" class="btn" id="b">Learn More <span class="fas fa-chevron-right"></span></a>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-cogs"></i>
+                <h3>MEC</h3>
+                <p>Mechanical Engineering</p>
+                <a href="#" class="btn" id="br">Learn More <span class="fas fa-chevron-right"></span></a>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-building"></i>
+                <h3>Civil</h3>
+                <p>Civil Engineering</p>
+                <a href="#" class="btn" id="br">Learn More <span class="fas fa-chevron-right"></span></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="home" id="about">
+        <div class="content">
+            <h1 class="heading">OUR <span>TEACHERS</span></h1>
+            <h3>Empathetic<br>Supportive<br>Engaging</h3>
+        </div>
+        <div class="image">
+            <img src="static/images/Group.svg" alt="Our Teachers" />
+        </div>
+    </section>
+
+    <section class="home" id="about">
+        <div class="image">
+            <img src="static/images/Good team-bro.svg" alt="Our Students" />
+        </div>
+        <div class="content">
+            <h1 class="heading">OUR <span>STUDENTS</span></h1>
+            <h3>Hardworking<br>Collaborative<br>Grow Together</h3>
+        </div>
+    </section>
+
+    <section class="book" id="queries1">
+        <h1 class="heading"><span>For</span> Queries</h1>
+        <div class="row">
+            <div class="image">
+                <img src="{{ url_for('static', filename='images/Questions-rafiki copy.svg') }}" alt="Queries Image" />
+            </div>
+            <form id="queryForm" action="{{ url_for('submit_query') }}" method="post">
+                <h3>Fill the Form</h3>
+                <input type="text" name="name" placeholder="Name" class="box" required />
+                <input type="text" name="phonenumber" placeholder="Phone Number" class="box" required />
+                <input type="email" name="email" placeholder="Email" class="box" required />
+                <textarea id="queryMessage" name="query" placeholder="Query" class="box" required></textarea>
+                <div id="error-message" style="color: red;"></div>
+                <input type="submit" value="Submit" class="btn" />
+            </form>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#about">About Us</a>
+            </div>
+
+            <div class="box">
+                <h3>Courses</h3>
+                <a href="https://en.wikipedia.org/wiki/Computer_science_and_engineering">Computer Science Engineering</a>
+                <a href="https://en.wikipedia.org/wiki/Civil_engineering#:~:text=Civil%20engineering%20is%20a%20professional,components%20of%20buildings%2C%20and%20railways.">Civil Engineering</a>
+                <a href="https://en.wikipedia.org/wiki/Mechanical_engineering">Mechanical Engineering</a>
+            </div>
+
+            <div class="box">
+                <h3>Login</h3>
+                <a href="{{ url_for('adminlogin') }}">Admin</a>
+                <a href="#">Teacher</a>
+                <a href="#">Student</a>
+            </div>
+
+            <div class="box">
+                <h3>Social</h3>
+                <a href="https://www.facebook.com/admissionbharathuniversity/">Facebook</a>
+                <a href="https://www.instagram.com/biher_official/?hl=en">Instagram</a>
+                <a href="https://www.linkedin.com/school/bharath/">LinkedIn</a>
+            </div>
+        </div>
+
+        <div class="credit">
+            <p>Created by <span style="color:blue;">mee group peru rasukondi ikkada  (home folder lo / index.html untadi)</span> | &copy; 2024 All rights reserved.</p>
+        </div>
+    </section>
+
+    <script src="static/index.js"></script>
+</body>
+
+</html>

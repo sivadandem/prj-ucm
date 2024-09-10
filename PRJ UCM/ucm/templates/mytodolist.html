@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="icon" type="image/png" href="static/images/biher.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="static/index.css" />
+
+    <style>
+        body{
+            margin-top:10%;
+        }
+        /* To-Do Section Styles */
+        .todo-section {
+            padding: 20px;
+            background-color: #fff;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .todo-section h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .todo-section form {
+            margin-bottom: 20px;
+        }
+        
+        .todo-section form label {
+            font-size: 1em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .todo-section form input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 1em;
+        }
+        
+        .todo-section form input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        
+        .todo-section form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        
+        .todo-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .todo-section table th, .todo-section table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .todo-section table th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        
+        .todo-section table tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .todo-section table td form input[type="submit"] {
+            background-color: #dc3545;
+            border: none;
+            padding: 5px 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .todo-section table td form input[type="submit"]:hover {
+            background-color: #c82333;}
+        </style>
+    
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <i class="fas fa-university"></i> Unified College Management
+        </a>
+        <nav class="navbar">
+            <a href="{{ url_for('studentportal') }}">Student Portal</a>
+            <a href="{{ url_for('studentlogout') }}" class="btn">Logout</a>
+        </nav>
+    </header>
+
+    <section class="todo-section">
+        <h1>My<span> To-Do List</span></h1>
+        <form action="{{ url_for('myadd_note') }}" method="post">
+            <label for="note">Add a Note:</label>
+            <input type="text" id="note" name="note" class="box" required />
+            <input type="submit" value="Add Note" class="btn" />
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sl No</th>
+                    <th>Note</th>
+                    <th>Date</th>
+                    <th>Time Created</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for note in notes %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ note.note }}</td>
+                    <td>{{ note.date }}</td>
+                    <td>{{ note.time_created }}</td>
+                    <td>
+                        <form action="{{ url_for('mydelete_note', note_id=note.id) }}" method="post">
+                            <input type="submit" value="Delete" class="btn" />
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <script src="static/index.js"></script>
+</body>
+
+</html>

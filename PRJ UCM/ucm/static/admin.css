@@ -1,0 +1,359 @@
+@import url("index.css");
+
+.image img {
+  width: 100px;
+  height: 600px;
+  /* Set height as per your needs */
+}
+
+.admin-section h1 span {
+  color: var(--blue);
+}
+
+.admin-section h1 {
+  font-size: 4.5rem;
+  color: var(--black);
+  line-height: 1.8;
+  text-shadow: var(--text-shadow);
+}
+
+.icons-container h3 {
+  margin-bottom: 20px;
+}
+
+.icons-container p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navbar a.btn:hover {
+  color: white;
+}
+
+/* announcements */
+
+.announcement {
+  margin-left: 60px;
+  font-size: small;
+  display: flex;
+}
+
+.announcement h3 {
+  color: red;
+  margin: 20px;
+}
+
+#announcementform {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#announcementform form {
+  background-color: var(--blue);
+}
+
+#announcementform form .btn:hover {
+  background-color: var(--blue);
+  color: white;
+}
+
+#announcementform span {
+  color: white;
+}
+
+/* admin portal query css */
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 1s step-start infinite;
+  font-size: small;
+}
+
+.query-section {
+    width: 100%;
+    overflow-x: auto; /* Only horizontal scroll */
+    margin-bottom: 20px;
+    white-space: nowrap; /* Prevents wrapping inside the table */
+    -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on touch devices */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* Ensures table takes a minimum width */
+}
+
+table thead {
+    background-color: #f2f2f2;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap; /* Prevents content from wrapping inside cells */
+}
+
+table th {
+    font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .query-section {
+        overflow-x: auto; /* Horizontal scroll when needed */
+    }
+}
+
+/* Styling for form elements */
+form {
+    display: inline-block;
+}
+
+select, button {
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button.btn {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+}
+
+button.btn:hover {
+    background-color: var(--dark-blue);
+    color:blue;
+}
+
+/* admin portal add teacher add student */
+
+.admin-section .row form {
+  background: #fff;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  padding: 4rem;
+  border-radius: 0.5rem;
+}
+
+.admin-section .row form .box {
+  width: 100%;
+  margin: 0.7rem 0;
+  border-radius: 0.5rem;
+  border: var(--border);
+  color: var(--black);
+  font-size: 1.6rem;
+  color: var(--black);
+  text-transform: none;
+  padding: 1rem;
+}
+
+.admin-section .row form label {
+  font-size: medium;
+}
+
+.admin-section .row form .btn {
+  padding: 1rem 3rem;
+}
+
+#add-teacher .row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* view teachers */
+
+.searchform label {
+  color: var(--blue);
+  font-size: medium;
+  margin: 10px;
+}
+
+.searchform .fields {
+  padding: 15px;
+  border-radius: 10px;
+  margin: 5px;
+  background-color: rgba(22, 160, 133, 0.2);
+}
+
+/* teacherdetails */
+
+.teacher-detail-section p strong {
+  color: var(--blue);
+  line-height: 1.6;
+}
+
+.teacher-detail-section p {
+  font-size: 24px;
+}
+
+/* query table position */
+
+.query-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.query-section table thead th,
+.query-section table tbody td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.query-section table tbody {
+  display: block;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.query-section table thead,
+.query-section table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Responsive Styles */
+
+@media screen and (max-width: 1200px) {
+  .admin-section h1 {
+    font-size: 3rem;
+  }
+
+  .icons-container p {
+    font-size: 16px;
+  }
+
+  .query-section table th,
+  .query-section table td {
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .admin-section .row form {
+    padding: 2rem;
+  }
+
+  .admin-section .row form .box {
+    font-size: 1.4rem;
+  }
+
+  .admin-section .row form .btn {
+    padding: 0.5rem 2rem;
+  }
+
+  .searchform .fields {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar a {
+    margin: 5px 0;
+  }
+  .home .main{
+    margin-right:10%;
+  }
+
+  .home .image {
+    flex: 1 1 auto;
+  }
+
+  .home .content {
+    flex: 1 1 auto;
+    margin-top: 10%;
+
+  }
+
+  .home {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image img {
+    width: 80px;
+    height: auto;
+  }
+
+  .admin-section h1 {
+    font-size: 2rem;
+  }
+
+  .icons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icons-container .icons {
+    margin-bottom: 10px;
+  }
+
+  .query-section table thead th,
+  .query-section table tbody td {
+    font-size: 12px;
+  }
+
+  .query-section table {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .admin-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .admin-section .row form {
+    padding: 1rem;
+  }
+
+  .admin-section .row form .box {
+    font-size: 1rem;
+  }
+
+  .admin-section .row form .btn {
+    padding: 0.5rem 1rem;
+  }
+
+  .searchform .fields {
+    padding: 8px;
+  }
+}

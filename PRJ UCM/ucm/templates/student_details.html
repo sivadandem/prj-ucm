@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Details</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/biher.png') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='teacher_details.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='quick links.css') }}" />
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <i class="fas fa-university"></i> Unified College Management
+        </a>
+        <nav class="navbar">
+            <a href="{{ url_for('adminportal') }}">
+                <button id="btn" class="btn">Home</button>
+            </a>
+            <a href="{{ url_for('view_students') }}">
+                <button id="home" class="btn">Student</button>
+            </a>
+        </nav>
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </header>
+
+    <section class="home" id="about">
+        <div class="content">
+            <div class="card">
+                <div class="card-border-top"></div>
+                <div class="img"></div>
+                <span style="text-transform: uppercase">{{ student.name }}</span>
+                <p class="job" style="color: white">{{ student.section }}</p>
+            </div>
+        </div>
+        <section class="teacher-detail-section" style="margin-top: 100px">
+            <p><strong>ID:</strong> {{ student.id }}</p>
+            <p><strong>Email:</strong> {{ student.email }}</p>
+            <p><strong>Phone Number:</strong> {{ student.phonenumber }}</p>
+            <p><strong>Unicode:</strong> {{ student.unicode }}</p>
+            <p><strong>Age:</strong> {{ student.age }}</p>
+            <p><strong>Fee Balance:</strong> {{ student.fee_balance }}</p>
+            <p><strong>Section:</strong> {{ student.section }}</p>
+            <p><strong>Course:</strong> {{ student.course }}</p>
+            <p><strong>Date and Time:</strong> {{ student.date_time }}</p>
+        </section>
+    </section>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+
+</html>

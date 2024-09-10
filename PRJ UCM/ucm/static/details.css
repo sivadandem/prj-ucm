@@ -1,0 +1,54 @@
+
+body{
+    margin-top:5%
+}
+
+.student-details {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+
+
+.card {
+    background-color: #ffffff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.detail-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .student-details {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .student-details h2 {
+        font-size: 24px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .detail-item {
+        font-size: 14px;
+    }
+}

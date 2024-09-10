@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="icon" type="image/png" href="images/biher.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="static/index.css">
+    <link rel="stylesheet" href="static/login.css">
+</head>
+
+<body>
+    <section class="home" id="about">
+        <div class="image">
+            <img src="static/images/teachersignup.svg" alt="Teacher">
+        </div>
+
+        <div class="content">
+            <h1 class="heading">Teacher<span> SIGNUP</span></h1>
+
+            <div class="login-form">
+                <div id="error-message" style="color: red;"></div>
+
+                <form action="/teachersignup" method="post" onsubmit="return validateUnicode()">
+                    <div class="form-group">
+                        <label for="username">
+                            <h1>Id</h1>
+                        </label>
+                        <input type="text" id="username" name="id" placeholder="Enter your UID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">
+                            <h1>Name</h1>
+                        </label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">
+                            <h1>Email</h1>
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phonenumber">
+                            <h1>Phone Number</h1>
+                        </label>
+                        <input type="text" id="phonenumber" name="phonenumber" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">
+                            <h1>Password</h1>
+                        </label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="unicode">
+                            <h1>Unicode</h1>
+                        </label>
+                        <input type="password" id="unicode" name="unicode" placeholder="Enter your Unicode" required>
+                    </div>
+                    <input type="submit" value="SIGNUP" class="btn">
+                </form>
+            </div>
+        </div>
+
+        <div class="auth-controls">
+            <a href="{{ url_for('teacherlogin') }}">
+                <button id="login-btn" class="btn">Login</button>
+            </a>
+            <a href="{{ url_for('home') }}">
+                <button id="home" class="btn">Home</button>
+            </a>
+        </div>
+    </section>
+
+    <script src="static/index.js"></script>
+</body>
+
+</html>

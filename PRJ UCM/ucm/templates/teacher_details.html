@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Details</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='images/biher.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='index.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='teacher_details.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='quick links.css') }}"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="#" class="logo">
+        <i class="fas fa-university"></i> Unified College Management
+      </a>
+      <nav class="navbar">
+        <a href="{{ url_for('adminportal') }}">
+          <button id="home-btn" class="btn">Home</button>
+        </a>
+        <a href="{{ url_for('view_teacher_leaves') }}">
+          <button id="leaves-btn" class="btn">Teacher Leaves</button>
+        </a>
+        <a href="{{ url_for('view_students') }}">
+          <button id="students-btn" class="btn">Students</button>
+        </a>
+      </nav>
+      <div id="menu-btn" class="fas fa-bars"></div>
+    </header>
+
+    <section class="home" id="teacher-details">
+      <div class="content">
+        <div class="card">
+          <div class="card-border-top"></div>
+          <div class="img"></div>
+          <span style="text-transform: uppercase">{{ teacher.name }}</span>
+          <p class="job" style="color: white">{{ teacher.department }}</p>
+        </div>
+      </div>
+
+      <section class="teacher-detail-section" style="margin-top: 100px">
+        <p><strong>ID:</strong> {{ teacher.id }}</p>
+        <p><strong>Email:</strong> {{ teacher.email }}</p>
+        <p><strong>Phone Number:</strong> {{ teacher.phonenumber }}</p>
+        <p><strong>Unicode:</strong> {{ teacher.unicode }}</p>
+        <p><strong>Age:</strong> {{ teacher.age }}</p>
+        <p><strong>Salary:</strong> {{ teacher.salary }}</p>
+        <p><strong>Department:</strong> {{ teacher.department }}</p>
+        <p><strong>Leave Reason:</strong> {{ teacher.leave_reason }}</p>
+        <p><strong>Leave Status:</strong> {{ teacher.leave_status }}</p>
+        <p><strong>Date and Time:</strong> {{ teacher.date_time }}</p>
+      </section>
+    </section>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+  </body>
+</html>

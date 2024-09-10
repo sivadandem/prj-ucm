@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Details</title>
+    <link rel="icon" type="image/png" href="static/images/biher.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="static/index.css" />
+    <link rel="stylesheet" href="static/details.css" />
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo"><i class="fas fa-university"></i> Unified College Management</a>
+        <nav class="navbar">
+            <a href="{{ url_for('studentportal') }}"><button class="btn" >Back to Portal</button></a>
+
+        </nav>
+    </header>
+
+    <section class="student-details">
+        <h1 class="heading">My <span>Details</span></h1>
+        <div class="card">
+            <h1>Personal Information</h1>
+            <div class="detail-item"><strong>ID:</strong> {{ student_details[1] }}</div>
+            <div class="detail-item"><strong>Name:</strong> {{ student_details[2] }}</div>
+            <div class="detail-item"><strong>Email:</strong> {{ student_details[3] }}</div>
+            <div class="detail-item"><strong>Phone Number:</strong> {{ student_details[4] }}</div>
+            <div class="detail-item"><strong>Age:</strong> {{ student_details[6] }}</div>
+        </div>
+
+        <div class="card">
+            <h1>Academic Information</h1>
+            <div class="detail-item"><strong>Attendance:</strong> {{ student_details[12] }}</div>
+            <div class="detail-item"><strong>Unicode:</strong> {{ student_details[5] }}</div>
+            <div class="detail-item"><strong>Course:</strong> {{ student_details[7] }}</div>
+            <div class="detail-item"><strong>Section:</strong> {{ student_details[8] }}</div>
+            <div class="detail-item"><strong>Hostel:</strong> {{ student_details[13] }}</div>
+        </div>
+
+        <div class="card">
+            <h1>Account Information</h1>
+            <div class="detail-item"><strong>Password:</strong> {{ student_details[9] }}</div>
+            <div class="detail-item"><strong>Fee Balance:</strong> {{ student_details[10] }}</div>
+            <div class="detail-item"><strong>Registration Date:</strong> {{ student_details[11] }}</div>
+        </div>
+    </section>
+
+    <script src="static/index.js"></script>
+</body>
+
+</html>

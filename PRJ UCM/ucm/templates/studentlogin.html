@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="icon" type="image/png" href="static/images/biher.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="static/index.css">
+    <link rel="stylesheet" href="static/login.css">
+    <link rel="stylesheet" href="static/admin.css">
+</head>
+
+<body>
+    <section class="home" id="login-section">
+        <div class="button">
+            <a href="{{ url_for('studentsignup') }}">
+                <button id="signup-btn" class="btn">Signup</button>
+            </a>
+            <a href="{{ url_for('home') }}">
+                <button id="home" class="btn">Home</button>
+            </a>
+        </div>
+        <div class="content">
+            <h1 class="heading">
+                <span>Student</span> Login
+            </h1>
+            
+            <!-- Login Form -->
+            <div class="login-form" id="login-form">
+                <form action="{{ url_for('studentlogin') }}" method="post">
+                    {% if error %}
+                    <div class="blink" id="error-message" style="color:white;">
+                        {{ error }}
+                    </div>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="username">
+                            <h1>Email</h1>
+                        </label>
+                        <input type="text" id="username" name="username" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">
+                            <h1>Password</h1>
+                        </label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <input type="submit" value="Login" class="btn">
+                </form>
+            </div>
+        </div>
+    
+        <div class="image">
+            <img src="static/images/teacherlogin.svg" alt="Admin">
+        </div>
+    </section>
+    <script src="static/index.js"></script>
+</body>
+
+</html>
